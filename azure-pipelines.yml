@@ -1,4 +1,20 @@
 # Starter pipeline
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: |
+      git config --global user.email "t-aksh@microsoft.com"
+      git config --global user.name "Akash Sharma"
+      
+      git reset --soft HEAD~1
+      Write-Host "git reset --soft HEAD~1"
+      
+      Write-Host "git status"
+      $ChangedFiles = $(git status --porcelain)
+      foreach ($ChangedFile in $ChangedFiles)
+      {
+      Write-Host $ChangedFile
+      }
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
